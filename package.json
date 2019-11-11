@@ -1,0 +1,30 @@
+{
+  "name": "gojek-solution",
+  "version": "0.0.1",
+  "description": "Solution to gojek parking lot problem",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aesher9o1/gojek.git"
+  },
+  "keywords": [
+    "gojek",
+    "javascript"
+  ],
+  "author": "aesher9o1",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aesher9o1/gojek/issues"
+  },
+  "homepage": "https://github.com/aesher9o1/gojek#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/node": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "nodemon": "^1.19.4"
+  }
+}
