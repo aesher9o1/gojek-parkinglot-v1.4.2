@@ -6,30 +6,29 @@ class ParkingLot {
         for (var i = 0; i < parseInt(size_parking_lot); i++)
             this._parkingDatabase.push(null)
 
-        console.log(`Created a parking lot with ${size_parking_lot} slots.`);
+        return size_parking_lot
     }
 
     park(registration_number, color) {
-        let found = false;
+        let found;
         if (this._parkingDatabase.length > 0) {
             for (var i = 0; i < this._parkingDatabase.length; i++) {
                 if (this._parkingDatabase[i] == null) {
                     this._parkingDatabase[i] = `${registration_number} ${color}`
-                    console.log(`Allocated slot number: ${i + 1}`)
                     found = true
-                    break
+                    return i + 1
                 }
             }
             if (!found)
-                console.log("Sorry, parking lot is full")
+                return found
         } else {
-            console.log("Sorry, parking lot is full")
+            return found
         }
     }
 
     leave(index) {
         this._parkingDatabase[parseInt(index) - 1] = null
-        console.log(`Slot number ${index} is free`)
+        return index
     }
 
     status() {
@@ -41,8 +40,7 @@ class ParkingLot {
                 result.push(`${i + 1} ${this._parkingDatabase[i]}`)
         }
 
-        for (var i = 0; i < result.length; i++)
-            console.log(result[i])
+        return result
     }
 
     registration_numbers_for_cars_with_colour(color) {
@@ -53,7 +51,7 @@ class ParkingLot {
         })
 
         //removes last comma
-        console.log(result.substring(0, result.length - 2))
+        return result.substring(0, result.length - 2)
     }
 
     slot_numbers_for_cars_with_colour(color) {
@@ -64,17 +62,16 @@ class ParkingLot {
         }
 
         //removes last comma
-        console.log(result.substring(0, result.length - 2))
+        return result.substring(0, result.length - 2)
     }
 
     slot_number_for_registration_number(registration_number) {
         let found;
         for (var i = 0; i < this._parkingDatabase.length; i++) {
             if (this._parkingDatabase[i] != null && this._parkingDatabase[i].includes(registration_number))
-                found = `${i + 1}, `
+                found = `${i + 1}`
         }
-
-        console.log(found ? found : "Not Found")
+        return found
     }
 }
 

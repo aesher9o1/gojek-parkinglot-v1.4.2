@@ -27,25 +27,34 @@ class Controller {
         if (MODES[inputs[0]]) {
             switch (inputs[0]) {
                 case "create_parking_lot":
-                    this.parkingDB.create_parking_lot(inputs[1])
+                    let statusParkingCreated = this.parkingDB.create_parking_lot(inputs[1])
+                    console.log(`Created a parking lot with ${statusParkingCreated} slots.`);
                     break
                 case "park":
-                    this.parkingDB.park(inputs[1], inputs[2])
+                    let seatAlloted = this.parkingDB.park(inputs[1], inputs[2])
+                    console.log(seatAlloted ? `Allocated slot number: ${seatAlloted}` : "Sorry, parking lot is full")
                     break
                 case "leave":
-                    this.parkingDB.leave(inputs[1])
+                    let freeSlot = this.parkingDB.leave(inputs[1])
+                    console.log(`Slot number ${freeSlot} is free`)
                     break
                 case "status":
-                    this.parkingDB.status()
+                    let result = this.parkingDB.status()
+                    result.forEach(ele => {
+                        console.log(ele)
+                    })
                     break
                 case "registration_numbers_for_cars_with_colour":
-                    this.parkingDB.registration_numbers_for_cars_with_colour(inputs[1])
+                    let registrationNumbers = this.parkingDB.registration_numbers_for_cars_with_colour(inputs[1])
+                    console.log(registrationNumbers)
                     break
                 case "slot_numbers_for_cars_with_colour":
-                    this.parkingDB.slot_numbers_for_cars_with_colour(inputs[1])
+                    let slots = this.parkingDB.slot_numbers_for_cars_with_colour(inputs[1])
+                    console.log(slots)
                     break
                 case "slot_number_for_registration_number":
-                    this.parkingDB.slot_number_for_registration_number(inputs[1])
+                    let slot = this.parkingDB.slot_number_for_registration_number(inputs[1])
+                    console.log(slot ? slot : "Not Found")
                     break
             }
             this.takeInput()
