@@ -34,6 +34,7 @@ class Controller {
                     this.parkingDB.park(inputs[1], inputs[2])
                     break
                 case "leave":
+                    this.parkingDB.leave(inputs[1])
                     break
                 case "status":
                     break

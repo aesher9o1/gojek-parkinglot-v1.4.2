@@ -26,8 +26,9 @@ class ParkingLot {
         }
     }
 
-    leave() {
-
+    leave(index) {
+        this._parkingDatabase[parseInt(index) - 1] = null
+        console.log(`Slot number ${index} is free`)
     }
 
     status() {
