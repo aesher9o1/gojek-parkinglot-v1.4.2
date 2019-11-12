@@ -1,11 +1,18 @@
 import readline from 'readline'
-
+import { MODES } from '../../config'
 
 class Controller {
     constructor() { }
 
-    processInputData() {
-
+    processInputData(data) {
+        //if the input entered is a valid mode
+        if (MODES[data.split(" ")[0]]) {
+            console.log("valid mode")
+        }
+        else {
+            console.log("invalid mode")
+            this.takeInput()
+        }
     }
 
     processFile() {
