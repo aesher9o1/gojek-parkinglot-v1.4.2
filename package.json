@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -20,13 +20,5 @@
   "bugs": {
     "url": "https://github.com/aesher9o1/gojek/issues"
   },
-  "homepage": "https://github.com/aesher9o1/gojek#readme",
-  "devDependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/node": "^7.7.0",
-    "@babel/preset-env": "^7.7.1"
-  },
-  "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.7.0"
-  }
+  "homepage": "https://github.com/aesher9o1/gojek#readme"
 }

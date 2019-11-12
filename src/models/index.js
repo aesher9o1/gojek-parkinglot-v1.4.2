@@ -1,6 +1,7 @@
-
 class ParkingLot {
-    _parkingDatabase = new Array()
+    constructor() {
+        this._parkingDatabase = new Array()
+    }
 
     create_parking_lot(size_parking_lot) {
         for (var i = 0; i < parseInt(size_parking_lot); i++)
@@ -75,4 +76,4 @@ class ParkingLot {
     }
 }
 
-export default ParkingLot
+exports.default = ParkingLot

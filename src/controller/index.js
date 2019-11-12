@@ -1,15 +1,12 @@
-import readline from 'readline'
-import { MODES } from '../../config'
-import ParkingLot from '../models'
-import fs from 'fs'
+const readline = require('readline')
+const parkingLot = require('../models').default
+const fs = require('fs')
+const config = require('../../config')
+
 
 class Controller {
-    parkingDB;
-    prompt;
-    serverInstance;
-
     constructor(serverInstance) {
-        this.parkingDB = new ParkingLot()
+        this.parkingDB = new parkingLot()
         this.serverInstance = serverInstance
     }
 
@@ -25,7 +22,7 @@ class Controller {
     processInputData(data) {
         //if the input entered is a valid mode
         const inputs = data.split(" ")
-        if (MODES[inputs[0]]) {
+        if (config.MODES[inputs[0]]) {
             switch (inputs[0]) {
                 case "create_parking_lot":
                     let statusParkingCreated = this.parkingDB.create_parking_lot(inputs[1])
@@ -77,4 +74,5 @@ class Controller {
 
 }
 
-export default Controller
+
+exports.default = Controller
