@@ -14,7 +14,7 @@ class ParkingLot {
         for (var i = 0; i < parseInt(size_parking_lot); i++)
             this._parkingDatabase.push(null)
 
-        return size_parking_lot
+        return parseInt(size_parking_lot)
     }
 
     /**
@@ -50,7 +50,7 @@ class ParkingLot {
      */
     leave(index) {
         this._parkingDatabase[parseInt(index) - 1] = null
-        return index
+        return parseInt(index)
     }
 
     /**
@@ -112,7 +112,7 @@ class ParkingLot {
         let found;
         for (var i = 0; i < this._parkingDatabase.length; i++) {
             if (this._parkingDatabase[i] != null && this._parkingDatabase[i].includes(registration_number))
-                found = `${i + 1}`
+                found = i + 1
         }
         return found
     }
