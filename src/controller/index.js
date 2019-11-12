@@ -37,6 +37,7 @@ class Controller {
                     this.parkingDB.leave(inputs[1])
                     break
                 case "status":
+                    this.parkingDB.status()
                     break
                 case "registration_numbers_for_cars_with_colour":
                     break

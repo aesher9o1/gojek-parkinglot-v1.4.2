@@ -13,7 +13,7 @@ class ParkingLot {
         if (this._parkingDatabase.length > 0) {
             for (var i = 0; i < this._parkingDatabase.length; i++) {
                 if (this._parkingDatabase[i] == null) {
-                    this._parkingDatabase[i] = this._makeParkingObj(registration_number, color)
+                    this._parkingDatabase[i] = `${registration_number} ${color}`
                     console.log(`Allocated slot number: ${i + 1}`)
                     found = true
                     break
@@ -32,7 +32,17 @@ class ParkingLot {
     }
 
     status() {
+        var result = new Array()
+        result.push("Slot No. Registration No. Color ")
 
+        for (var i = 0; i < this._parkingDatabase.length; i++) {
+            if (this._parkingDatabase[i])
+                result.push(`${i+1} ${this._parkingDatabase[i]}`)
+
+        }
+
+        for (var i = 0; i < result.length; i++)
+            console.log(result[i])
     }
 
     registration_numbers_for_cars_with_colour() {
@@ -46,14 +56,6 @@ class ParkingLot {
     slot_number_for_registration_number() {
 
     }
-
-    _makeParkingObj(registration_number, color) {
-        let obj = new Object();
-        obj.registration_number = "REGISTRATION NUMBER OF CAR"
-        obj.color = "COLOR OF THE CAR"
-        return obj
-    }
-
 }
 
 export default ParkingLot
