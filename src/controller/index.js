@@ -75,17 +75,15 @@ class Controller {
 
 
     /**
-     * Splits the sentenes of the files and processes the data one by one
-     * 
-     * @param {string} args File location
-     */
+      * Splits the sentenes of the files and processes the data one by one
+      * 
+      * @param {string} args File location
+      */
     processFile(args) {
         fs.readFile(args.toString(), 'utf-8', (err, data) =>
             data.split('\n').forEach(ele => this.processInputData(ele))
         );
     }
-
-
 }
 
 
