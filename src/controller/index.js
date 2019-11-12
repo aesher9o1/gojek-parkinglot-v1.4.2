@@ -2,7 +2,6 @@ import readline from 'readline'
 import { MODES } from '../../config'
 import ParkingLot from '../models'
 
-
 class Controller {
     parkingDB;
     prompt;

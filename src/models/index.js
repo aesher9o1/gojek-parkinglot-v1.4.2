@@ -1,3 +1,4 @@
+
 class ParkingLot {
     _parkingDatabase = new Array()
 
