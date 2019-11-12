@@ -37,16 +37,23 @@ class ParkingLot {
 
         for (var i = 0; i < this._parkingDatabase.length; i++) {
             if (this._parkingDatabase[i])
-                result.push(`${i+1} ${this._parkingDatabase[i]}`)
-
+                result.push(`${i + 1} ${this._parkingDatabase[i]}`)
         }
 
         for (var i = 0; i < result.length; i++)
             console.log(result[i])
     }
 
-    registration_numbers_for_cars_with_colour() {
+    registration_numbers_for_cars_with_colour(color) {
+        let result = ""
+        this._parkingDatabase.forEach(ele => {
+            if (ele != null && ele.includes(color)) {
+                result += `${ele.split(" ")[0]}, `
+            }
+        })
 
+        //removes last comma
+        console.log(result.substring(0, result.length - 2))
     }
 
     slot_numbers_for_cars_with_colour() {

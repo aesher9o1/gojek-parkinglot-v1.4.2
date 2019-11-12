@@ -40,6 +40,7 @@ class Controller {
                     this.parkingDB.status()
                     break
                 case "registration_numbers_for_cars_with_colour":
+                    this.parkingDB.registration_numbers_for_cars_with_colour(inputs[1])
                     break
                 case "slot_numbers_for_cars_with_colour":
                     break
