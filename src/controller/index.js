@@ -43,6 +43,7 @@ class Controller {
                     this.parkingDB.registration_numbers_for_cars_with_colour(inputs[1])
                     break
                 case "slot_numbers_for_cars_with_colour":
+                    this.parkingDB.slot_numbers_for_cars_with_colour(inputs[1])
                     break
                 case "slot_number_for_registration_number":
                     break

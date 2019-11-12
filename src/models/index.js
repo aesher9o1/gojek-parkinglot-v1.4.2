@@ -47,9 +47,8 @@ class ParkingLot {
     registration_numbers_for_cars_with_colour(color) {
         let result = ""
         this._parkingDatabase.forEach(ele => {
-            if (ele != null && ele.includes(color)) {
+            if (ele != null && ele.includes(color))
                 result += `${ele.split(" ")[0]}, `
-            }
         })
 
         //removes last comma
@@ -57,11 +56,19 @@ class ParkingLot {
     }
 
     slot_numbers_for_cars_with_colour() {
+        let result = ""
+        for (var i = 0; i < this._parkingDatabase.length; i++) {
+            if (ele != null && ele.includes(color))
+                result += `${i}, `
+        }
 
+        //removes last comma
+        console.log(result.substring(0, result.length - 2))
     }
 
     slot_number_for_registration_number() {
-
+        let found = false;
+        
     }
 }
 
