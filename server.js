@@ -11,13 +11,10 @@ const server = http.createServer(function (req, res) {
 })
 const controller = new Controller(server)
 
-
-
 if (args == 'interactive')
     controller.takeInput()
 else {
     controller.processFile(args)
 }
-
 
 server.listen(process.env.PORT || config.PORT)

@@ -10,6 +10,9 @@ class Controller {
         this.serverInstance = serverInstance
     }
 
+    /**
+     * Responsible to take input from the commandline
+     */
     takeInput() {
         this.prompt = readline.createInterface({
             input: process.stdin,
@@ -19,6 +22,13 @@ class Controller {
         this.prompt.question("", (data) => this.processInputData(data))
     }
 
+    /**
+     * Checks if the user input is one of the recognized modes if not then exists 
+     * if it is then it interacts with the model and does the desired work and 
+     * takes input in loop untill exit is encountered
+     * 
+     * @param {string} data : The user input 
+     */
     processInputData(data) {
         //if the input entered is a valid mode
         const inputs = data.split(" ")
@@ -64,7 +74,11 @@ class Controller {
     }
 
 
-
+    /**
+     * Splits the sentenes of the files and processes the data one by one
+     * 
+     * @param {string} args File location
+     */
     processFile(args) {
         fs.readFile(args.toString(), 'utf-8', (err, data) =>
             data.split('\n').forEach(ele => this.processInputData(ele))
