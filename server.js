@@ -13,7 +13,7 @@ const controller = new Controller(server)
 
 
 
-if (args == 'true')
+if (args == 'interactive')
     controller.takeInput()
 else {
     controller.processFile(args)

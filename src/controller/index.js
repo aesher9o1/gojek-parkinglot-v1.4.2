@@ -1,6 +1,7 @@
 import readline from 'readline'
 import { MODES } from '../../config'
 import ParkingLot from '../models'
+import fs from 'fs'
 
 class Controller {
     parkingDB;
@@ -18,7 +19,7 @@ class Controller {
             output: process.stdout,
             terminal: false
         })
-        this.prompt.question("Command: ", (data) => this.processInputData(data))
+        this.prompt.question("", (data) => this.processInputData(data))
     }
 
     processInputData(data) {
@@ -67,8 +68,10 @@ class Controller {
 
 
 
-    _processFile() {
-
+    processFile(args) {
+        fs.readFile(args.toString(), 'utf-8', (err, data) =>
+            data.split('\n').forEach(ele => this.processInputData(ele))
+        );
     }
 
 
