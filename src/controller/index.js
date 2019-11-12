@@ -31,6 +31,7 @@ class Controller {
                     this.parkingDB.create_parking_lot(inputs[1])
                     break
                 case "park":
+                    this.parkingDB.park(inputs[1], inputs[2])
                     break
                 case "leave":
                     break

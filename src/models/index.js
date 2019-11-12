@@ -8,8 +8,22 @@ class ParkingLot {
         console.log(`Created a parking lot with ${size_parking_lot} slots.`);
     }
 
-    park() {
-
+    park(registration_number, color) {
+        let found = false;
+        if (this._parkingDatabase.length > 0) {
+            for (var i = 0; i < this._parkingDatabase.length; i++) {
+                if (this._parkingDatabase[i] == null) {
+                    this._parkingDatabase[i] = this._makeParkingObj(registration_number, color)
+                    console.log(`Allocated slot number: ${i + 1}`)
+                    found = true
+                    break
+                }
+            }
+            if (!found)
+                console.log("Sorry, parking lot is full")
+        } else {
+            console.log("Sorry, parking lot is full")
+        }
     }
 
     leave() {
@@ -31,6 +45,14 @@ class ParkingLot {
     slot_number_for_registration_number() {
 
     }
+
+    _makeParkingObj(registration_number, color) {
+        let obj = new Object();
+        obj.registration_number = "REGISTRATION NUMBER OF CAR"
+        obj.color = "COLOR OF THE CAR"
+        return obj
+    }
+
 }
 
 export default ParkingLot
