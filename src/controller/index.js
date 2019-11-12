@@ -80,9 +80,15 @@ class Controller {
       * @param {string} args File location
       */
     processFile(args) {
-        fs.readFile(args.toString(), 'utf-8', (err, data) =>
-            data.split('\n').forEach(ele => this.processInputData(ele))
-        );
+        fs.readFile(args.toString(), 'utf-8', (err, data) => {
+            if (!err)
+                data.split('\n').forEach(ele => this.processInputData(ele))
+            else {
+                console.log("Wrong file directory")
+                this.serverInstance.close()
+            }
+
+        });
     }
 }
 
