@@ -1,8 +1,11 @@
 class ParkingLot {
-    parkingArray = new Array()
+    _parkingDatabase = new Array()
 
-    create_parking_lot() {
+    create_parking_lot(size_parking_lot) {
+        for (var i = 0; i < parseInt(size_parking_lot); i++)
+            this._parkingDatabase.push(null)
 
+        console.log(`Created a parking lot with ${size_parking_lot} slots.`);
     }
 
     park() {
