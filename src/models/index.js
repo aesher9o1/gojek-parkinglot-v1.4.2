@@ -55,20 +55,25 @@ class ParkingLot {
         console.log(result.substring(0, result.length - 2))
     }
 
-    slot_numbers_for_cars_with_colour() {
+    slot_numbers_for_cars_with_colour(color) {
         let result = ""
         for (var i = 0; i < this._parkingDatabase.length; i++) {
-            if (ele != null && ele.includes(color))
-                result += `${i}, `
+            if (this._parkingDatabase[i] != null && this._parkingDatabase[i].includes(color))
+                result += `${i + 1}, `
         }
 
         //removes last comma
         console.log(result.substring(0, result.length - 2))
     }
 
-    slot_number_for_registration_number() {
-        let found = false;
-        
+    slot_number_for_registration_number(registration_number) {
+        let found;
+        for (var i = 0; i < this._parkingDatabase.length; i++) {
+            if (this._parkingDatabase[i] != null && this._parkingDatabase[i].includes(registration_number))
+                found = `${i + 1}, `
+        }
+
+        console.log(found ? found : "Not Found")
     }
 }
 
