@@ -5,13 +5,21 @@ import ParkingLot from '../models'
 
 class Controller {
     parkingDB;
-    constructor() {
+    prompt;
+    serverInstance;
+
+    constructor(serverInstance) {
         this.parkingDB = new ParkingLot()
+        this.serverInstance = serverInstance
     }
 
     takeInput() {
-        let prompt = readline.createInterface({ input: process.stdin, output: process.stdout, terminal: false })
-        prompt.question("Command: ", (data) => this.processInputData(data))
+        this.prompt = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout,
+            terminal: false
+        })
+        this.prompt.question("Command: ", (data) => this.processInputData(data))
     }
 
     processInputData(data) {
@@ -38,8 +46,8 @@ class Controller {
             this.takeInput()
         }
         else {
-            console.log("invalid mode")
-            this.takeInput()
+            this.prompt.close()
+            this.serverInstance.close()
         }
     }
 

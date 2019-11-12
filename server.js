@@ -3,7 +3,11 @@ import Controller from './src/controller'
 import { PORT, CONTENT_META } from './config'
 
 const args = process.argv[process.argv.length - 1]
-const controller = new Controller()
+const server = http.createServer(function (req, res) {
+    res.writeHead(200, CONTENT_META);
+    res.end('SERVER STATUS UP');
+})
+const controller = new Controller(server)
 
 
 if (args == 'true')
@@ -13,7 +17,4 @@ else {
 }
 
 
-http.createServer(function (req, res) {
-    res.writeHead(200, CONTENT_META);
-    res.end('SERVER STATUS UP');
-}).listen(process.env.PORT || PORT)
+server.listen(process.env.PORT || PORT)
