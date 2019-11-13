@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # Install dependencies and run test
+BASEDIR=$(dirname "$0")
+cd $BASEDIR
+
 npm i
 npm test
 

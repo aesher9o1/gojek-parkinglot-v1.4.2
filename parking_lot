@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+BASEDIR=$(dirname "$0")
+cd $BASEDIR
+
 if [ "$#" -ne 1 ]; 
 then
 	npm start interactive

@@ -36,7 +36,7 @@ class Controller {
             switch (inputs[0]) {
                 case "create_parking_lot":
                     let statusParkingCreated = this.parkingDB.create_parking_lot(inputs[1])
-                    console.log(`Created a parking lot with ${statusParkingCreated} slots.`);
+                    console.log(`Created a parking lot with ${statusParkingCreated} slots.\n`);
                     break
                 case "park":
                     let seatAlloted = this.parkingDB.park(inputs[1], inputs[2])
