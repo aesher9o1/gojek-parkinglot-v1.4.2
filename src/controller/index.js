@@ -13,13 +13,13 @@ class Controller {
     /**
      * Responsible to take input from the commandline
      */
-    takeInput() {
+    takeInput(isInteractive = false) {
         this.prompt = readline.createInterface({
             input: process.stdin,
             output: process.stdout,
             terminal: false
         })
-        this.prompt.question("", (data) => this.processInputData(data))
+        this.prompt.question("", (data) => this.processInputData(data, isInteractive))
     }
 
     /**
@@ -29,43 +29,64 @@ class Controller {
      * 
      * @param {string} data : The user input 
      */
-    processInputData(data) {
+    processInputData(data, isInteractive = false) {
         //if the input entered is a valid mode
         const inputs = data.split(" ")
         if (config.MODES[inputs[0]]) {
             switch (inputs[0]) {
                 case "create_parking_lot":
                     let statusParkingCreated = this.parkingDB.create_parking_lot(inputs[1])
-                    console.log(`Created a parking lot with ${statusParkingCreated} slots.\n`);
+                    console.log(`Created a parking lot with ${statusParkingCreated} slots`);
+
+                    if (isInteractive)
+                        console.log('')
                     break
                 case "park":
                     let seatAlloted = this.parkingDB.park(inputs[1], inputs[2])
                     console.log(seatAlloted ? `Allocated slot number: ${seatAlloted}` : "Sorry, parking lot is full")
+
+                    if (isInteractive)
+                        console.log('')
                     break
                 case "leave":
                     let freeSlot = this.parkingDB.leave(inputs[1])
                     console.log(`Slot number ${freeSlot} is free`)
+
+                    if (isInteractive)
+                        console.log('')
                     break
                 case "status":
                     let result = this.parkingDB.status()
                     result.forEach(ele => {
                         console.log(ele)
                     })
+
+                    if (isInteractive)
+                        console.log('')
                     break
                 case "registration_numbers_for_cars_with_colour":
                     let registrationNumbers = this.parkingDB.registration_numbers_for_cars_with_colour(inputs[1])
                     console.log(registrationNumbers)
+
+                    if (isInteractive)
+                        console.log('')
                     break
                 case "slot_numbers_for_cars_with_colour":
                     let slots = this.parkingDB.slot_numbers_for_cars_with_colour(inputs[1])
                     console.log(slots)
+
+                    if (isInteractive)
+                        console.log('')
                     break
                 case "slot_number_for_registration_number":
                     let slot = this.parkingDB.slot_number_for_registration_number(inputs[1])
-                    console.log(slot ? slot : "Not Found")
+                    console.log(slot ? slot.toString() : "Not found")
+
+                    if (isInteractive)
+                        console.log('')
                     break
             }
-            this.takeInput()
+            this.takeInput(isInteractive)
         }
         else {
             this.prompt.close()
@@ -82,7 +103,7 @@ class Controller {
     processFile(args) {
         fs.readFile(args.toString(), 'utf-8', (err, data) => {
             if (!err)
-                data.split('\n').forEach(ele => this.processInputData(ele))
+                data.split('').forEach(ele => this.processInputData(ele))
             else {
                 console.log("Wrong file directory")
                 this.serverInstance.close()

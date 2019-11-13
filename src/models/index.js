@@ -30,7 +30,7 @@ class ParkingLot {
         if (this._parkingDatabase.length > 0) {
             for (var i = 0; i < this._parkingDatabase.length; i++) {
                 if (this._parkingDatabase[i] == null) {
-                    this._parkingDatabase[i] = `           ${registration_number}      ${color}`
+                    this._parkingDatabase[i] = `          ${registration_number}      ${color}`
                     found = true
                     return i + 1
                 }
@@ -59,7 +59,7 @@ class ParkingLot {
      */
     status() {
         var result = new Array()
-        result.push("Slot No.    Registration No.    Color ")
+        result.push("Slot No.    Registration No    Colour")
 
         for (var i = 0; i < this._parkingDatabase.length; i++) {
             if (this._parkingDatabase[i])
@@ -79,7 +79,7 @@ class ParkingLot {
         let result = ""
         this._parkingDatabase.forEach(ele => {
             if (ele != null && ele.includes(color))
-                result += `${ele.split(" ")[0]}, `
+                result += `${ele.trim().split("    ")[0]}, `
         })
 
         //removes last comma

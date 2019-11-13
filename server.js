@@ -12,7 +12,7 @@ const server = http.createServer(function (req, res) {
 const controller = new Controller(server)
 
 if (args == 'interactive')
-    controller.takeInput()
+    controller.takeInput(true)
 else {
     controller.processFile(args)
 }
