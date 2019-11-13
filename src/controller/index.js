@@ -103,7 +103,7 @@ class Controller {
     processFile(args) {
         fs.readFile(args.toString(), 'utf-8', (err, data) => {
             if (!err)
-                data.split('').forEach(ele => this.processInputData(ele))
+                data.split('\n').forEach(ele => this.processInputData(ele))
             else {
                 console.log("Wrong file directory")
                 this.serverInstance.close()
